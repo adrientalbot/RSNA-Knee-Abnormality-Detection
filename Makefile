@@ -1,4 +1,4 @@
-.PHONY: help setup sync notebook kernel clean
+.PHONY: help setup sync notebook labels kernel clean
 
 UV ?= uv
 UV_CACHE_DIR ?= .uv-cache
@@ -17,6 +17,9 @@ sync: ## Update .venv from uv.lock
 
 notebook: ## Start JupyterLab inside the project environment
 	$(UV) run jupyter lab notebooks
+
+labels: ## Generate resumable JEV labels (pass options with LABEL_ARGS)
+	$(UV) run python jev_labeling.py $(LABEL_ARGS)
 
 kernel: ## Register the project environment as a Jupyter kernel
 	$(UV) run python -m ipykernel install --user --name $(KERNEL_NAME) --display-name "Python (RSNA Knee)"
