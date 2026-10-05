@@ -18,6 +18,8 @@ __pycache__/
 
 # Local competition data
 /train.csv
+/report_labels_v2.csv
+/artifacts/
 
 # OS and editor files
 .DS_Store
